@@ -16,6 +16,7 @@ import {
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { PlayerSummary } from "@/lib/schemas/player-schema";
+import Link from "next/link";
 
 export default function Page() {
   const [players, setPlayers] = useState<PlayerSummary[]>([]);
@@ -34,6 +35,7 @@ export default function Page() {
             <TableHead>کد ملی</TableHead>
             <TableHead>تاریخ تولد</TableHead>
             <TableHead>جنسیت</TableHead>
+            <TableHead className="w-[100px]"></TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -52,6 +54,14 @@ export default function Page() {
               <TableCell>{player.nationalCode}</TableCell>
               <TableCell>{player.dateOfBirth}</TableCell>
               <TableCell>{player.gender}</TableCell>
+              <TableCell>
+                <Link
+                  href={`/dashboard/players/${player.id}`}
+                  className="text-blue-500 hover:underline"
+                >
+                  ویرایش
+                </Link>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
